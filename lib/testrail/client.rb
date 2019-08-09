@@ -71,7 +71,11 @@ module Testrail
         response = conn.request(request)
 
         if response.body && !response.body.empty?
-          result = JSON.parse(response.body)
+          begin
+            result = JSON.parse(response.body)
+          rescue
+            raise APIError.new("Can't parse response \n" + response.body)
+          end
         else
           result = {}
         end
