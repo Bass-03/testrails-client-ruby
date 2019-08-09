@@ -6,8 +6,12 @@ require 'json'
 
 # @author Edmundo Sanchez
 module Testrail
-
+  # Client for the TestRail API, both request based and idiomatic
   module Client
+    # Net:HTTP based interface for the Testrail API
+    # @attr url [String] Your Test rail URL
+    # @attr user [String] Your testrail user
+    # @attr password [String] Your testrail password
     class Request
       attr_accessor :url
       attr_accessor :user
@@ -84,6 +88,7 @@ module Testrail
       end
     end
 
+    # Custom Error class
     class APIError < StandardError; end
 
   end
