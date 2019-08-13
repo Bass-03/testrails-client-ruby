@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Another Client wrapper in Ruby for TestRail API (v2)"
   spec.description   = "An easy to mantain gem that wrapps the v2 testrail API"
-  spec.homepage      = "https://github.com"
+  spec.homepage      = "https://github.com/mundo03/testrails-client-ruby"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.
