@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    testrail-client (0.1.0)
+    testrail-client (0.2.0)
 
 GEM
   remote: https://rubygems.org/
