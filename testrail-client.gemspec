@@ -27,8 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "sinatra", "~> 2.0.5"
-  spec.add_development_dependency 'webmock', "~> 3.6.2"
-  spec.add_development_dependency 'yard', "~> 0.9.2"
+  spec.add_development_dependency "sinatra"
+  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'yard'
 
 end
