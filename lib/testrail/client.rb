@@ -18,12 +18,13 @@ module Testrail
       attr_accessor :password
       # Initialize Client
       # @param base_url [String] Your Testrail URL
-      def initialize(base_url)
+      def initialize(base_url, beta=false)
         if !base_url.match(/\/$/)
           base_url += '/'
         end
         @url = base_url + 'index.php?/api/v2/'
         @content_type = "application/json"
+        @beta = beta
       end
       # send GET to uri
       # @param uri [String] Test rail API path
@@ -56,6 +57,7 @@ module Testrail
         request.body = JSON.dump(data) if data.is_a? Hash
         request.set_form data, 'multipart/form-data' if data.is_a? Array
         request.basic_auth(@user, @password)
+        request.add_field('x-api-ident', "beta") if @beta
         return request
       end
 
