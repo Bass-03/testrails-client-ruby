@@ -30,7 +30,7 @@ module Testrail
       # @param uri [String] Test rail API path
       # @return [Hash] Response from testrail API
       def send_get(uri)
-         request = _setup_request("GET",uri)
+        request = _setup_request("GET",uri)
         _send_request(request)
       end
       # send POST to uri
