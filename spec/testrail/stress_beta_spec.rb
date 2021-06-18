@@ -15,6 +15,16 @@ RSpec.describe Testrail::Client::Api do
         @client.password = tr_config.testrail_key
     end
 
+    it "Queries with out required argument, raise different error" do
+        expect {
+            @client.get_results(nil)
+        }.to raise_error("TestRail API returned HTTP 400 (\"Field :test_id is a required field.\")")
+        
+        expect {
+            @client.get_result(nil)
+        }.to raise_error("TestRail API returned HTTP 404 (\"Unknown method 'get_result'\")")
+    end
+
     it "Hits API Rate Limits" do
         expect {
         threads = []

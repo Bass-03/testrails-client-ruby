@@ -24,11 +24,15 @@ module Testrail
             send_post("#{m}/#{id}",opts)
           end
         rescue Testrail::Client::APIError => error
-          time_to_wait = 60
-          STDERR.puts("Hit Testrail\'s API rate Limits, Sleeing #{time_to_wait} seconds")
-          sleep(time_to_wait)
-          STDERR.puts("Retrying #{m} with #{args}")
-          retry
+          if error.message.include? "API Rate"
+            time_to_wait = 60
+            STDERR.puts("Hit Testrail\'s API rate Limits, Sleeing #{time_to_wait} seconds")
+            sleep(time_to_wait)
+            STDERR.puts("Retrying #{m} with #{args}")
+            retry
+          else
+            raise error
+          end
         end
       end
       # Stringify parameters for GET requests
