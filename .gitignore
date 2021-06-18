@@ -10,3 +10,6 @@
 
 # rspec failure tracking
 .rspec_status
+
+# ignore testrail login for test
+spec/testrail/testrail.yaml

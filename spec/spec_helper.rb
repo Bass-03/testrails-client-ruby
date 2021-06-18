@@ -1,6 +1,7 @@
 require "bundler/setup"
 require 'webmock/rspec'
 require "testrail/client"
+require "testrail/api"
 require_relative "support/fake_testrails.rb"
 
 RSpec.configure do |config|

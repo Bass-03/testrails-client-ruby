@@ -8,6 +8,7 @@ GEM
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    config_this (0.1.0)
     crack (0.4.5)
       rexml
     diff-lcs (1.4.4)
@@ -51,6 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
+  config_this
   rake
   rspec
   sinatra
@@ -59,4 +61,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   2.1.4
+   2.2.20

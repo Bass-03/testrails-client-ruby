@@ -14,13 +14,21 @@ module Testrail
         id = x if x.is_a? Integer #if Integer it is an ID
         opts = x if x.is_a? Hash #if Hash it is an options array
         opts ||= y #if opts not set, take second arg
-        case m
-        when /get/
-          send_get("#{m}/#{id}&#{_param_stringify(opts)}")
-        when /add_attachment/
-          send_post("#{m}/#{id}",opts.to_a)
-        else
-          send_post("#{m}/#{id}",opts)
+        begin
+          case m
+          when /get/
+            send_get("#{m}/#{id}&#{_param_stringify(opts)}")
+          when /add_attachment/
+            send_post("#{m}/#{id}",opts.to_a)
+          else
+            send_post("#{m}/#{id}",opts)
+          end
+        rescue Testrail::Client::APIError => error
+          time_to_wait = 60
+          STDERR.puts("Hit Testrail\'s API rate Limits, Sleeing #{time_to_wait} seconds")
+          sleep(time_to_wait)
+          STDERR.puts("Retrying #{m} with #{args}")
+          retry
         end
       end
       # Stringify parameters for GET requests
